@@ -76,7 +76,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
@@ -98,6 +98,19 @@ dd {
 }
 dd a {
   font-weight: bold;
+}
+
+dd:first-of-type a {
+  color: #328ef4;
+}
+dd:nth-of-type(2) a {
+  color: #5063e7;
+}
+dd:nth-of-type(3) a {
+  color: #7034d9;
+}
+dd:last-of-type a {
+  color: #9e20cc;
 }
 
 .right {
@@ -141,13 +154,7 @@ ul.no-spacing li {
 
 a {
   color: #07f;
-  background-image: linear-gradient(to right, #17a1e6, #7034d9);
   font-weight: 500;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
 
   text-decoration: none;
 }
