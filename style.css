@@ -1,0 +1,219 @@
+/******** GLOBAL ********/
+:root {
+  --font-family-serif: "Fraunces", "Fraunces 9pt", ui-serif, serif;
+  --font-family-sans: "The Future Mono", ui-sans-serif, system-ui, sans-serif;
+  --line-height: 1.5;
+
+  --color-paper: #fff;
+  --color-text: #000;
+  --color-secondary: rgba(0, 0, 0, 0.54);
+  --color-accent: #ba160c;
+
+  font-size: 11pt;
+
+  margin: 0;
+  padding: 42px 0 60px;
+  background-color: #f5f5f5;
+}
+
+body {
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto;
+  padding: 3.5ch 4ch;
+
+  background-color: var(--color-paper);
+  color: var(--color-text);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 25px 40px rgba(0, 0, 0, 0.1),
+    0 50px 80px rgba(0, 0, 0, 0.01);
+
+  font-family: var(--font-family-sans);
+  letter-spacing: -0.05ch;
+  font-size: 1rem;
+  line-height: var(--line-height);
+
+  display: grid;
+  grid-template-columns: [start] 19.05ch [main] 1fr [end];
+  column-gap: 4ch;
+  align-items: baseline;
+  align-content: start;
+}
+
+/* body {
+  font-family: "Test Untitled Sans";
+  letter-spacing: normal;
+}
+:is(h2, h3, h4, h5, h6) {
+ font-family: var(--font-family-sans);
+} */
+
+* {
+  box-sizing: border-box;
+  grid-column: main / end;
+}
+
+hr {
+  grid-column: -1 / 1;
+
+  margin: calc(1rem * var(--line-height) * 1.5 - 0.076rem) 0
+    calc(1rem * var(--line-height) * 0.5);
+  border: none;
+  border-bottom: 0.076rem solid var(--color-text);
+}
+
+/******** TYPOGRAPHY ********/
+:is(h1, h2, h3, h4, h5, h6, p) {
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--font-family-serif);
+  font-size: 3rem;
+  font-weight: 350;
+  line-height: calc(1rem * var(--line-height) * 2);
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  letter-spacing: normal;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: calc(1rem * var(--line-height) * 0.25);
+
+  grid-column: start / main;
+  color: var(--color-accent);
+}
+
+h3 {
+  line-height: inherit;
+  font-weight: 500;
+  font-size: inherit;
+}
+
+/******** HEADER ********/
+body > header {
+  display: contents;
+}
+
+body > header h1 {
+  grid-column: start / main;
+  grid-row: span 2;
+}
+
+body > header ol {
+  margin-bottom: calc(1rem * var(--line-height));
+  align-self: start;
+}
+
+/******** ARTICLES ********/
+article,
+section {
+  display: contents;
+}
+:is(article, section) > header {
+  grid-column: start / main;
+}
+
+article:not(:first-of-type) > :is(header, ol) {
+  margin-top: calc(1rem * var(--line-height));
+}
+
+h2 + article {
+  margin-top: calc(1rem * var(--line-height) * -1);
+}
+
+/******** ROLES AND DATES ********/
+dl {
+  grid-column: 2 / span 1;
+  margin: 0;
+}
+dd {
+  margin: 0;
+}
+time {
+  color: var(--color-secondary);
+}
+
+/******** LISTS ********/
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+li::before {
+  content: "\00b7";
+  font-feature-settings: "ss13";
+  margin-left: -2ch;
+  float: left;
+}
+
+ol.inline li {
+  display: inline;
+}
+ol.inline li::before {
+  margin-left: 0;
+  padding: 0 0.5ch;
+  float: none;
+}
+ol.inline li:first-of-type::before {
+  content: none;
+}
+ol.inline li.collapse-padding::before {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/******** SKILLS ********/
+dl.split {
+  display: contents;
+}
+dl.split dt {
+  grid-column: start / main;
+}
+
+/******** INLINE ELEMENTS ********/
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.076em;
+  text-underline-offset: resolve(0.272em - 0.076em);
+}
+a:hover {
+  text-decoration-style: wavy;
+  text-decoration-skip-ink: none;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.punct {
+  margin-right: -0.67ch;
+  margin-left: -0.33ch;
+}
+
+@media print {
+  :root {
+    padding: 0;
+  }
+  body {
+    box-shadow: none;
+    --color-text: #000;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #242021;
+  }
+  body {
+    --color-paper: #2e2a2b;
+    --color-text: rgba(255, 255, 255, 0.8);
+    --color-secondary: rgba(255, 255, 255, 0.54);
+    --color-accent: #ff8764;
+  }
+
+  :is(h1, h3, h4, h5, h6, strong) {
+    color: #fff;
+  }
+}

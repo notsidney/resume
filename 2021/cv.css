@@ -12,7 +12,7 @@
 
 html {
   margin: 0;
-  padding: 20px 0 60px;
+  padding: 42px 0 60px;
 
   background-color: #fdc;
 }
@@ -164,8 +164,8 @@ li:last-of-type {
 
 a {
   color: inherit;
-  text-underline-offset: 0.067em;
-  text-decoration-thickness: 0.1em;
+  text-decoration-thickness: 0.076em;
+  text-underline-offset: calc(0.272em - 0.076em);
 }
 
 @media print {
