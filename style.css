@@ -44,7 +44,7 @@ body {
   letter-spacing: normal;
 }
 :is(h2, h3, h4, h5, h6) {
- font-family: var(--font-family-sans);
+  font-family: var(--font-family-sans);
 } */
 
 * {
@@ -142,9 +142,12 @@ ol {
 }
 li::before {
   content: "\00b7";
-  font-feature-settings: "ss13";
+  font-feature-settings: "ss13", "case";
   margin-left: -2ch;
   float: left;
+}
+body > header li::before {
+  font-feature-settings: "ss13";
 }
 
 ol.inline li {
@@ -176,7 +179,7 @@ a {
   color: inherit;
   text-decoration-line: underline;
   text-decoration-thickness: 0.076em;
-  text-underline-offset: resolve(0.272em - 0.076em);
+  text-underline-offset: calc(0.272em - 0.076em - 0.01em);
 }
 a:hover {
   text-decoration-style: wavy;
