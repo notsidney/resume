@@ -2,11 +2,13 @@
 :root {
   --font-family-serif: "Fraunces", "Fraunces 9pt", ui-serif, serif;
   --font-family-sans: "The Future Mono", ui-sans-serif, system-ui, sans-serif;
-  --line-height: 1.5;
+  --line-height: 1.618;
 
   --color-paper: #fff;
-  --color-text: #000;
+  --color-text-bold: rgba(0, 0, 0, 1);
+  --color-text: rgba(0, 0, 0, 0.87);
   --color-secondary: rgba(0, 0, 0, 0.54);
+  --color-underline: rgba(0, 0, 0, 0.33);
   --color-accent: #ba160c;
 
   font-size: 11pt;
@@ -20,9 +22,10 @@ body {
   width: 210mm;
   height: 297mm;
   margin: 0 auto;
-  padding: 3.5ch 4ch;
+  padding: 4ch;
 
   background-color: var(--color-paper);
+  border-radius: 4px;
   color: var(--color-text);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 25px 40px rgba(0, 0, 0, 0.1),
     0 50px 80px rgba(0, 0, 0, 0.01);
@@ -39,14 +42,6 @@ body {
   align-content: start;
 }
 
-/* body {
-  font-family: "Test Untitled Sans";
-  letter-spacing: normal;
-}
-:is(h2, h3, h4, h5, h6) {
-  font-family: var(--font-family-sans);
-} */
-
 * {
   box-sizing: border-box;
   grid-column: main / end;
@@ -55,8 +50,8 @@ body {
 hr {
   grid-column: -1 / 1;
 
-  margin: calc(1rem * var(--line-height) * 1.5 - 0.076rem) 0
-    calc(1rem * var(--line-height) * 0.5);
+  margin: calc(1rem * var(--line-height) * 1.8 - 0.076rem) 0
+    calc(1rem * var(--line-height) * 0.2);
   border: none;
   border-bottom: 0.076rem solid var(--color-text);
 }
@@ -64,6 +59,9 @@ hr {
 /******** TYPOGRAPHY ********/
 :is(h1, h2, h3, h4, h5, h6, p) {
   margin: 0;
+}
+:is(h1, h3, h4, h5, h6, strong) {
+  color: var(--color-text-bold);
 }
 
 h1 {
@@ -78,7 +76,6 @@ h1 {
 h2 {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: calc(1rem * var(--line-height) * 0.25);
 
   grid-column: start / main;
   color: var(--color-accent);
@@ -88,6 +85,11 @@ h3 {
   line-height: inherit;
   font-weight: 500;
   font-size: inherit;
+}
+h3 i {
+  font-style: normal;
+  font-weight: normal;
+  color: var(--color-secondary);
 }
 
 /******** HEADER ********/
@@ -141,13 +143,18 @@ ol {
   list-style-type: none;
 }
 li::before {
-  content: "\00b7";
-  font-feature-settings: "ss13", "case";
+  content: "\2022";
+  font-feature-settings: "case";
   margin-left: -2ch;
   float: left;
+  color: var(--color-underline);
+}
+li:hover::before {
+  color: var(--color-accent);
+  font-weight: 500;
 }
 body > header li::before {
-  font-feature-settings: "ss13";
+  font-feature-settings: normal;
 }
 
 ol.inline li {
@@ -155,7 +162,7 @@ ol.inline li {
 }
 ol.inline li::before {
   margin-left: 0;
-  padding: 0 0.5ch;
+  padding: 0;
   float: none;
 }
 ol.inline li:first-of-type::before {
@@ -167,32 +174,42 @@ ol.inline li.collapse-padding::before {
 }
 
 /******** SKILLS ********/
-dl.split {
-  display: contents;
-}
-dl.split dt {
+.skills h3 {
   grid-column: start / main;
+  font-weight: normal;
 }
 
 /******** INLINE ELEMENTS ********/
 a {
   color: inherit;
   text-decoration-line: underline;
+  text-decoration-color: var(--color-underline);
   text-decoration-thickness: 0.076em;
   text-underline-offset: calc(0.272em - 0.076em - 0.01em);
 }
-a:hover {
+a:hover,
+a:focus,
+a:active {
+  text-decoration-color: var(--color-accent);
   text-decoration-style: wavy;
   text-decoration-skip-ink: none;
+}
+a:active {
+  opacity: 0.5;
 }
 
 strong {
   font-weight: 500;
 }
 
-.punct {
-  margin-right: -0.67ch;
-  margin-left: -0.33ch;
+.abbr-punct {
+  margin-right: -0.75ch;
+  margin-left: -0.25ch;
+}
+.end-punct {
+  margin-left: -1ch;
+  position: relative;
+  right: -1ch;
 }
 
 @media print {
@@ -201,7 +218,7 @@ strong {
   }
   body {
     box-shadow: none;
-    --color-text: #000;
+    border-radius: 0;
   }
 }
 
@@ -211,12 +228,23 @@ strong {
   }
   body {
     --color-paper: #2e2a2b;
+    --color-text-bold: rgba(255, 255, 255, 1);
     --color-text: rgba(255, 255, 255, 0.8);
     --color-secondary: rgba(255, 255, 255, 0.54);
-    --color-accent: #ff8764;
-  }
-
-  :is(h1, h3, h4, h5, h6, strong) {
-    color: #fff;
+    --color-underline: rgba(255, 255, 255, 0.33);
+    --color-accent: #ff8574;
   }
 }
+
+/* body {
+  font-family: "Test Untitled Sans";
+  letter-spacing: normal;
+}
+:is(h2, h3, h4, h5, h6) {
+  font-family: var(--font-family-sans);
+}
+.abbr-punct,
+.end-punct {
+  margin: 0;
+  position: static;
+} */
