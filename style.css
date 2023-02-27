@@ -1,6 +1,6 @@
 /******** GLOBAL ********/
 :root {
-  --font-family-serif: "Fraunces", "Fraunces 9pt", ui-serif, serif;
+  --font-family-serif: "Fraunces", "Fraunces 144pt Soft", ui-serif, serif;
   --font-family-sans: "The Future Mono", ui-sans-serif, system-ui, sans-serif;
   --line-height: 1.618;
 
@@ -14,7 +14,7 @@
   font-size: 11pt;
 
   margin: 0;
-  padding: 42px 0 60px;
+  padding: 42px 8px 60px;
   background-color: #f5f5f5;
 }
 
@@ -77,7 +77,7 @@ h2 {
   font-size: 1rem;
   font-weight: 500;
 
-  grid-column: start / main;
+  grid-column: start / end;
   color: var(--color-accent);
 }
 
@@ -177,6 +177,12 @@ ol.inline li.collapse-padding::before {
 .skills h3 {
   grid-column: start / main;
   font-weight: normal;
+}
+.skills ol.inline {
+  text-indent: -1.95ch;
+}
+.skills ol.inline li:first-of-type::before {
+  content: "\2022";
 }
 
 /******** INLINE ELEMENTS ********/
