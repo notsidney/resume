@@ -29,7 +29,7 @@ body {
 	width: 210mm;
 	height: 297mm;
 	margin: 0 auto;
-	padding: 8mm 10mm;
+	padding: 7mm 10mm;
 
 	background-color: var(--color-paper);
 	border-radius: 4px;
@@ -158,11 +158,11 @@ li + li {
 	margin-top: var(--section-gap);
 }
 li::before {
-	content: "\25AA";
+	content: "\25AA\FE0E";
 
 	display: inline-block;
 	width: 1mm;
-	margin-left: -4mm;
+	margin-left: -3mm;
 	float: left;
 
 	font-weight: 900;
