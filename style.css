@@ -1,7 +1,8 @@
 /******** GLOBAL ********/
 :root {
-  --font-family-serif: "Fraunces", "Fraunces 144pt Soft", ui-serif, serif;
-  --font-family-sans: "The Future Mono", ui-sans-serif, system-ui, sans-serif;
+  --font-family-serif: "Fraunces-subset", "Fraunces", "Fraunces 144pt Soft",
+    ui-serif, serif;
+  --font-family-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
   --line-height: 1.618;
 
   --color-paper: #fff;
@@ -22,7 +23,7 @@ body {
   width: 210mm;
   height: 297mm;
   margin: 0 auto;
-  padding: 4ch;
+  padding: 10mm;
 
   background-color: var(--color-paper);
   border-radius: 4px;
@@ -31,13 +32,13 @@ body {
     0 50px 80px rgba(0, 0, 0, 0.01);
 
   font-family: var(--font-family-sans);
-  letter-spacing: -0.05ch;
+  font-feature-settings: "ss01";
   font-size: 1rem;
   line-height: var(--line-height);
 
   display: grid;
-  grid-template-columns: [start] 19.05ch [main] 1fr [end];
-  column-gap: 4ch;
+  grid-template-columns: [start] 50mm [main] 1fr [end];
+  column-gap: 7.5mm;
   align-items: baseline;
   align-content: start;
 }
@@ -69,13 +70,14 @@ h1 {
   font-size: 3rem;
   font-weight: 350;
   line-height: calc(1rem * var(--line-height) * 2);
+  font-feature-settings: normal;
   font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
   letter-spacing: normal;
 }
 
 h2 {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
 
   grid-column: start / end;
   color: var(--color-accent);
@@ -83,7 +85,7 @@ h2 {
 
 h3 {
   line-height: inherit;
-  font-weight: 500;
+  font-weight: 700;
   font-size: inherit;
 }
 h3 i {
@@ -144,14 +146,14 @@ ol {
 }
 li::before {
   content: "\2022";
-  font-feature-settings: "case";
-  margin-left: -2ch;
+  width: 1mm;
+  margin-left: -4mm;
   float: left;
+  font-weight: 700;
   color: var(--color-underline);
 }
 li:hover::before {
   color: var(--color-accent);
-  font-weight: 500;
 }
 body > header li::before {
   font-feature-settings: normal;
@@ -162,7 +164,7 @@ ol.inline li {
 }
 ol.inline li::before {
   margin-left: 0;
-  padding: 0;
+  padding: 0 2mm;
   float: none;
 }
 ol.inline li:first-of-type::before {
@@ -170,7 +172,6 @@ ol.inline li:first-of-type::before {
 }
 ol.inline li.collapse-padding::before {
   padding-left: 0;
-  padding-right: 0;
 }
 
 /******** SKILLS ********/
@@ -179,7 +180,7 @@ ol.inline li.collapse-padding::before {
   font-weight: normal;
 }
 .skills ol.inline {
-  text-indent: -1.95ch;
+  text-indent: -6.5mm;
 }
 .skills ol.inline li:first-of-type::before {
   content: "\2022";
@@ -205,17 +206,7 @@ a:active {
 }
 
 strong {
-  font-weight: 500;
-}
-
-.abbr-punct {
-  margin-right: -0.75ch;
-  margin-left: -0.25ch;
-}
-.end-punct {
-  margin-left: -1ch;
-  position: relative;
-  right: -1ch;
+  font-weight: 600;
 }
 
 @media print {
@@ -241,16 +232,3 @@ strong {
     --color-accent: #ff8574;
   }
 }
-
-/* body {
-  font-family: "Test Untitled Sans";
-  letter-spacing: normal;
-}
-:is(h2, h3, h4, h5, h6) {
-  font-family: var(--font-family-sans);
-}
-.abbr-punct,
-.end-punct {
-  margin: 0;
-  position: static;
-} */

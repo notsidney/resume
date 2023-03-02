@@ -2,3 +2,13 @@
   from = "/pdf"
   to = "/Sidney Alcantara Resume.pdf"
   status = 301
+
+[[redirects]]
+  from = "/fonts/*"
+  to = "https://fonts-sidney-me.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[edge_functions]]
+  path = "/fonts/*"
+  function = "rewrite-pass-headers"
