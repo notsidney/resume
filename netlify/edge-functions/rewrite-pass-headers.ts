@@ -1,22 +1,22 @@
-import type { Context } from 'https://edge.netlify.com';
+import type { Context } from "https://edge.netlify.com";
 
 export default async (
-	request: Request,
-	context: Context
+  request: Request,
+  context: Context
 ): Promise<Response> => {
-	const referer = request.headers.get('referer');
+  const referer = request.headers.get("referer");
 
-	const prodRegex = /^https?:\/\/(.*\.)?sidney\.me(\/.*)?$/;
-	const devRegex = /^https?:\/\/(.*--)?sidney-me\.netlify\.app(\/.*)?$/;
+  const prodRegex = /^https?:\/\/resume.sidney\.me(\/.*)?$/;
+  const devRegex = /^https?:\/\/(.*--)?resume-sidney-me\.netlify\.app(\/.*)?$/;
 
-	if (
-		referer === null ||
-		!(prodRegex.test(referer) || devRegex.test(referer))
-	) {
-		return new Response('Forbidden', { status: 403 });
-	}
+  if (
+    referer === null ||
+    !(prodRegex.test(referer) || devRegex.test(referer))
+  ) {
+    return new Response("Forbidden", { status: 403 });
+  }
 
-	// Get the next HTTP response in the chain
-	const response = await context.next(request);
-	return response;
+  // Get the next HTTP response in the chain
+  const response = await context.next(request);
+  return response;
 };
