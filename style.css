@@ -38,7 +38,7 @@ body {
 		0 50px 80px rgba(0, 0, 0, 0.01);
 
 	font-family: var(--font-family-sans);
-	font-feature-settings: "ss01";
+	font-feature-settings: "ss01", "liga" 0;
 	font-size: 1rem;
 	line-height: var(--line-height);
 
