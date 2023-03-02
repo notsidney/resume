@@ -57,8 +57,8 @@ body {
 hr {
 	grid-column: -1 / 1;
 
-	margin: calc(1.25rem * var(--line-height) * 0.67 - 0.07rem) 0
-		calc(1.25rem * var(--line-height) * 0.33);
+	margin: calc(1rem * var(--line-height) * (1.5 - 0.25) - 0.07rem) 0
+		calc(1rem * var(--line-height) * 0.25);
 	border: none;
 	border-bottom: 0.07rem solid var(--color-text);
 }
@@ -130,7 +130,7 @@ article:first-of-type > * {
 	margin-top: var(--section-gap);
 }
 article > * {
-	margin-top: calc(1rem * var(--line-height) * 0.75);
+	margin-top: calc(1rem * var(--line-height));
 }
 
 /******** ROLES AND DATES ********/
@@ -168,8 +168,10 @@ li::before {
 	font-weight: 900;
 	color: var(--color-underline);
 }
-li:hover::before {
-	color: var(--color-accent);
+@media (hover: hover) {
+	li:hover::before {
+		color: var(--color-accent);
+	}
 }
 body > header li::before {
 	font-feature-settings: normal;
