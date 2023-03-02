@@ -213,8 +213,11 @@ strong {
 }
 
 @media print {
-  :root {
+  html {
+    margin: 0;
     padding: 0;
+    min-width: auto;
+    background-color: #fff;
   }
   body {
     box-shadow: none;
