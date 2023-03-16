@@ -8,6 +8,11 @@
   to = "https://fonts-sidney-me.netlify.app/:splat"
   status = 200
   force = true
+  
+[[redirects]]
+  from = "/pa/*"
+  to = "https://plausible.io/:splat"
+  status = 200
 
 [[edge_functions]]
   path = "/fonts/*"
