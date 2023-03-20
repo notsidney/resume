@@ -2,7 +2,8 @@
 :root {
 	--font-family-serif: "Fraunces-subset", "Fraunces", "Fraunces 144pt Soft",
 		ui-serif, serif;
-	--font-family-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-family-sans: "Public Sans alt g", "Public Sans", ui-sans-serif,
+		system-ui, sans-serif;
 	--line-height: 1.5;
 
 	--color-paper: #fff;
@@ -38,7 +39,6 @@ body {
 		0 50px 80px rgba(0, 0, 0, 0.01);
 
 	font-family: var(--font-family-sans);
-	font-feature-settings: "ss01", "liga" 0;
 	font-size: 1rem;
 	line-height: var(--line-height);
 
@@ -232,7 +232,7 @@ a:active {
 }
 
 strong {
-	font-weight: 650;
+	font-weight: 600;
 }
 
 .end-punct {
@@ -245,7 +245,16 @@ strong {
 	font-feature-settings: "aalt";
 }
 
+.hidden {
+	color: var(--color-paper);
+}
+
 @media print {
+	:root {
+		--color-paper: #fff;
+		--color-text-bold: #000;
+		--color-text: #000;
+	}
 	html {
 		margin: 0;
 		padding: 0;
