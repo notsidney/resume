@@ -11,7 +11,8 @@
 	--color-text: rgba(0, 0, 0, 0.87);
 	--color-secondary: rgba(0, 0, 0, 0.54);
 	--color-underline: rgba(0, 0, 0, 0.33);
-	--color-accent: #ba160c;
+	--color-accent: #d54100;
+	--color-accent: oklch(58.5% 0.2 37.42);
 
 	font-size: 11pt;
 	-webkit-text-size-adjust: none;
@@ -28,9 +29,9 @@ html {
 
 body {
 	width: 210mm;
-	height: 297mm;
+	min-height: 297mm;
 	margin: 0 auto;
-	padding: 7mm 10mm;
+	padding: 10mm 10mm;
 
 	background-color: var(--color-paper);
 	border-radius: 4px;
@@ -47,6 +48,17 @@ body {
 	column-gap: 5.5mm;
 	align-items: baseline;
 	align-content: start;
+	position: relative;
+}
+body::before {
+	content: '';
+	display: block;
+
+	position:absolute;
+	top:297mm;
+	left:0;
+	right:0;
+	border-bottom: 1px dashed var(--color-underline);
 }
 
 * {
@@ -57,10 +69,10 @@ body {
 hr {
 	grid-column: -1 / 1;
 
-	margin: calc(1rem * var(--line-height) * (1.5 - 0.25) - 0.07rem) 0
-		calc(1rem * var(--line-height) * 0.25);
+	margin: calc(1rem * var(--line-height) * (2.5 - 0.5) - 0.07rem) 0
+		calc(1rem * var(--line-height) * 0.5);
 	border: none;
-	border-bottom: 0.07rem solid var(--color-text);
+	border-bottom: 0.07rem solid var(--color-accent);
 }
 
 /******** TYPOGRAPHY ********/
@@ -83,7 +95,7 @@ h1 {
 
 h2 {
 	font-size: 1rem;
-	font-weight: 600;
+	font-weight: 450;
 
 	grid-column: start / end;
 	color: var(--color-accent);
@@ -161,18 +173,18 @@ li::before {
 	content: "\25AA\FE0E";
 
 	display: inline-block;
-	width: 1mm;
-	margin-left: -3mm;
+	/* width: 1mm; */
+	margin-left: -3.5mm;
 	float: left;
 
-	font-weight: 900;
+	/* font-weight: 900; */
 	color: var(--color-underline);
 }
-@media (hover: hover) {
+/* @media (hover: hover) {
 	li:hover::before {
 		color: var(--color-accent);
 	}
-}
+} */
 body > header li::before {
 	font-feature-settings: normal;
 }
@@ -187,7 +199,7 @@ ol.inline li {
 }
 ol.inline li::before {
 	margin-left: 0;
-	padding: 0 2mm;
+	padding: 0 1.5mm;
 	float: none;
 }
 ol.inline li:first-of-type::before {
@@ -265,6 +277,9 @@ strong {
 		box-shadow: none;
 		border-radius: 0;
 	}
+	body::before {
+		content: none;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
@@ -277,6 +292,7 @@ strong {
 		--color-text: rgba(255, 255, 255, 0.8);
 		--color-secondary: rgba(255, 255, 255, 0.54);
 		--color-underline: rgba(255, 255, 255, 0.33);
-		--color-accent: #ff8574;
+		--color-accent: #ff602c;
+		--color-accent: oklch(69% 0.25 37.42);
 	}
 }
