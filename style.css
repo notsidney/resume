@@ -1,9 +1,7 @@
 /******** GLOBAL ********/
 :root {
-	--font-family-serif: "Fraunces-subset", "Fraunces", "Fraunces 144pt Soft",
-		ui-serif, serif;
-	--font-family-sans: "Public Sans alt g", "Public Sans", ui-sans-serif,
-		system-ui, sans-serif;
+	--font-family-serif: "PP Fragment Glare", ui-serif, serif;
+	--font-family-sans: "Iosevka S24 Sans", ui-sans-serif, system-ui, sans-serif;
 	--line-height: 1.5;
 
 	--color-paper: #fff;
@@ -40,6 +38,7 @@ body {
 	font-family: var(--font-family-sans);
 	font-size: 1rem;
 	line-height: var(--line-height);
+	letter-spacing: -0.025em;
 
 	display: grid;
 	grid-template-columns: [start] 50mm [main] 1fr [end];
@@ -49,13 +48,13 @@ body {
 	position: relative;
 }
 body::before {
-	content: '';
+	content: "";
 	display: block;
 
-	position:absolute;
-	top:297mm;
-	left:0;
-	right:0;
+	position: absolute;
+	top: 297mm;
+	left: 0;
+	right: 0;
 	border-bottom: 1px dashed var(--color-underline);
 }
 
@@ -84,16 +83,15 @@ hr {
 h1 {
 	font-family: var(--font-family-serif);
 	font-size: 2.618rem;
-	font-weight: 350;
+	font-weight: 220;
 	line-height: 1;
 	font-feature-settings: normal;
-	font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
 	letter-spacing: normal;
 }
 
 h2 {
 	font-size: 1rem;
-	font-weight: 450;
+	font-weight: 500;
 
 	grid-column: start / end;
 	color: var(--color-accent);
@@ -197,7 +195,7 @@ ol.inline li {
 }
 ol.inline li::before {
 	margin-left: 0;
-	padding: 0 1.5mm;
+	padding: 0 1mm;
 	float: none;
 }
 ol.inline li:first-of-type::before {
